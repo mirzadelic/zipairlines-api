@@ -9,5 +9,5 @@ router = routers.DefaultRouter()
 app_name = 'airlines'
 urlpatterns = [
     path('', include(router.urls)),
-    path('airplane/', AirlineView.as_view(), name='airplane')
+    path('airplanes/', AirlineView.as_view(), name='airplane')
 ]

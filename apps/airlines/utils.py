@@ -4,6 +4,9 @@ from django.conf import settings
 
 
 class AirplaneUtils(object):
+    '''
+    Utils class for calculating data
+    '''
 
     def __init__(self, airplane):
         self.airplane = airplane

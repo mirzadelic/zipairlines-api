@@ -6,6 +6,14 @@ from .utils import AirplaneUtils
 
 
 class AirplaneSerializer(serializers.Serializer):
+    '''
+    Serializer for single airplane, which return read only calculated data:
+     - tank_capacity
+     - per_passenger_consumption
+     - per_minute_fuel_consumption
+     - max_fly_minutes
+    '''
+
     id = serializers.IntegerField()
     passengers = serializers.IntegerField()
     tank_capacity = serializers.SerializerMethodField()
@@ -30,6 +38,10 @@ class AirplaneSerializer(serializers.Serializer):
 
 
 class AirlineSerializer(serializers.Serializer):
+    '''
+    Serializer for all airplanes, with validation for max allowed planes.
+    '''
+
     airplanes = AirplaneSerializer(many=True)
 
     class Meta:
