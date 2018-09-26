@@ -10,22 +10,27 @@ class AirplaneUtils(object):
 
     @property
     def tank_capacity(self):
-        return Decimal(self.airplane['id']) * Decimal(settings.TANK_LITERS)
+        value = Decimal(self.airplane['id']) * Decimal(settings.TANK_LITERS)
+        return round(value, 3)
 
     @property
     def per_passenger_consumption(self):
-        return Decimal(self.airplane['passengers']) * Decimal(
+        value = Decimal(self.airplane['passengers']) * Decimal(
             settings.FUEL_BY_PASSENGER)
+        return round(value, 3)
 
     @property
     def airplane_consumption(self):
-        return Decimal(self.airplane['id']) * Decimal(
+        value = Decimal(self.airplane['id']) * Decimal(
             settings.MULTIPLIED_VALUE)
+        return round(value, 3)
 
     @property
     def per_minute_fuel_consumption(self):
-        return self.airplane_consumption + self.per_passenger_consumption
+        value = self.airplane_consumption + self.per_passenger_consumption
+        return round(value, 3)
 
     @property
     def max_fly_minutes(self):
-        return self.tank_capacity / self.per_minute_fuel_consumption
+        value = self.tank_capacity / self.per_minute_fuel_consumption
+        return round(value, 3)

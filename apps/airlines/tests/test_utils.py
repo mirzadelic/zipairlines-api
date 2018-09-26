@@ -19,7 +19,10 @@ class AirplaneUtilsTests(SimpleTestCase):
         Test tank_capacity property
         '''
 
-        self.assertEqual(self.airplane_utils.tank_capacity, Decimal(5 * 200))
+        self.assertEqual(
+            self.airplane_utils.tank_capacity,
+            round(Decimal(5 * 200), 3)
+        )
 
     def test__per_passenger_consumption(self):
         '''
@@ -28,7 +31,7 @@ class AirplaneUtilsTests(SimpleTestCase):
 
         self.assertEqual(
             self.airplane_utils.per_passenger_consumption,
-            Decimal(100) * Decimal(0.002)
+            round(Decimal(100) * Decimal(0.002), 3)
         )
 
     def test__airplane_consumption(self):
@@ -38,7 +41,7 @@ class AirplaneUtilsTests(SimpleTestCase):
 
         self.assertEqual(
             self.airplane_utils.airplane_consumption,
-            Decimal(5) * Decimal(0.80)
+            round(Decimal(5) * Decimal(0.80), 3)
         )
 
     def test__per_minute_fuel_consumption(self):
@@ -48,7 +51,10 @@ class AirplaneUtilsTests(SimpleTestCase):
 
         self.assertEqual(
             self.airplane_utils.per_minute_fuel_consumption,
-            (Decimal(5) * Decimal(0.80)) + (Decimal(100) * Decimal(0.002))
+            round(
+                (Decimal(5) * Decimal(0.80)) + (Decimal(100) * Decimal(0.002)),
+                3
+            )
         )
 
     def test__max_fly_minutes(self):
@@ -58,6 +64,9 @@ class AirplaneUtilsTests(SimpleTestCase):
 
         self.assertEqual(
             self.airplane_utils.max_fly_minutes,
-            (Decimal(5 * 200)) / (
-                (Decimal(5) * Decimal(0.80)) + (Decimal(100) * Decimal(0.002)))
+            round(
+                Decimal(5 * 200) / ((Decimal(5) * Decimal(0.80)) + (
+                    Decimal(100) * Decimal(0.002))),
+                3
+            )
         )
