@@ -13,4 +13,3 @@ class AirlineView(APIView):
         serializer = AirlineSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             return Response(serializer.data)
-        return Response('ASDAS')

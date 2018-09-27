@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from django.test import SimpleTestCase
+from django.conf import settings
 
 from apps.airlines.utils import AirplaneUtils
 
@@ -70,3 +71,24 @@ class AirplaneUtilsTests(SimpleTestCase):
                 3
             )
         )
+
+    def test__fuel_required(self):
+        '''
+        Test fuel_required property
+        '''
+
+        for i in range(1, 10):
+            airplane = {
+                'id': i,
+                'passengers': i*20
+            }
+
+            ap = AirplaneUtils(airplane)
+
+            airplane_consumption = airplane['id'] * settings.MULTIPLIED_VALUE
+            per_passenger_consumption = airplane['passengers'] * settings.FUEL_BY_PASSENGER
+
+            fuel_capacity = Decimal(airplane_consumption + (
+                per_passenger_consumption * airplane['passengers']))
+
+            self.assertEqual(ap.fuel_required, round(fuel_capacity, 3))

@@ -17,7 +17,7 @@ class AirplanesAPITests(APISimpleTestCase):
         '''
 
         data = {
-            'airplanes': [{'id': i, 'passengers': 200} for i in range(0, 11)]
+            'airplanes': [{'id': i, 'passengers': 3} for i in range(1, 12)]
         }
         response = self.client.post(self.url, data)
 

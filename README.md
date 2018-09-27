@@ -82,7 +82,8 @@ Response data:
       "tank_capacity": 200.0,
       "per_passenger_consumption": 0.2,
       "per_minute_fuel_consumption": 1.0,
-      "max_fly_minutes": 200.0
+      "max_fly_minutes": 200.0,
+      "fuel_required": 20.8
     },
     {
       "id": 2,
@@ -90,7 +91,8 @@ Response data:
       "tank_capacity": 400.0,
       "per_passenger_consumption": 0.4,
       "per_minute_fuel_consumption": 2.0,
-      "max_fly_minutes": 200.0
+      "max_fly_minutes": 200.0,
+      "fuel_required": 81.6
     },
     {
       "id": 3,
@@ -98,7 +100,8 @@ Response data:
       "tank_capacity": 600.0,
       "per_passenger_consumption": 0.6,
       "per_minute_fuel_consumption": 3.0,
-      "max_fly_minutes": 200.0
+      "max_fly_minutes": 200.0,
+      "fuel_required": 182.4
     },
     {
       "id": 4,
@@ -106,7 +109,8 @@ Response data:
       "tank_capacity": 800.0,
       "per_passenger_consumption": 0.6,
       "per_minute_fuel_consumption": 3.8,
-      "max_fly_minutes": 210.526
+      "max_fly_minutes": 210.526,
+      "fuel_required": 183.2
     }
   ]
 }

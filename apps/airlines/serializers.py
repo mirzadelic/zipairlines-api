@@ -12,6 +12,7 @@ class AirplaneSerializer(serializers.Serializer):
      - per_passenger_consumption
      - per_minute_fuel_consumption
      - max_fly_minutes
+     - fuel_required
     '''
 
     id = serializers.IntegerField()
@@ -20,9 +21,17 @@ class AirplaneSerializer(serializers.Serializer):
     per_passenger_consumption = serializers.SerializerMethodField()
     per_minute_fuel_consumption = serializers.SerializerMethodField()
     max_fly_minutes = serializers.SerializerMethodField()
+    fuel_required = serializers.SerializerMethodField()
 
     class Meta:
         fields = ('id', 'passengers', 'tank_capacity', 'fuel_consumption')
+
+    def validate(self, data):
+        airplane = AirplaneUtils(data)
+        if airplane.fuel_required > airplane.tank_capacity:
+            raise serializers.ValidationError(
+                'Plane cannot accept that much passengers.')
+        return data
 
     def get_tank_capacity(self, obj):
         return AirplaneUtils(obj).tank_capacity
@@ -35,6 +44,9 @@ class AirplaneSerializer(serializers.Serializer):
 
     def get_max_fly_minutes(self, obj):
         return AirplaneUtils(obj).max_fly_minutes
+
+    def get_fuel_required(self, obj):
+        return AirplaneUtils(obj).fuel_required
 
 
 class AirlineSerializer(serializers.Serializer):

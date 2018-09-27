@@ -17,6 +17,12 @@ class AirplaneUtils(object):
         return round(value, 3)
 
     @property
+    def fuel_required(self):
+        value = Decimal(self.airplane_consumption) + Decimal(
+            self.per_passenger_consumption * self.airplane['passengers'])
+        return round(value, 3)
+
+    @property
     def per_passenger_consumption(self):
         value = Decimal(self.airplane['passengers']) * Decimal(
             settings.FUEL_BY_PASSENGER)
